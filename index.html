@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/media-queries.css" />
+
     <title>Totoro's Kitchen..(^_^)</title>
 </head>
 
@@ -39,26 +43,64 @@
     <!-- BODY START -->
 
     <!-- SEARCH BAR START -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Search Bar container</h1>
+    <div class="searchBarContainer">
+        <div class="searchBarRow">
+            <div class="container">
+                <div class="row searchBar">
+                    <div class="col">
+                        <strong class="findRecipe">Find Recipes</strong>
+                        <form class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input type="text" class="form-control searchBarInput" placeholder="Enter Ingredients" />
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- SEARCH BAR END -->
 
     <!-- RECIPE LIST START -->
-    <div class="container">
+    <div class="container recipeList">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <p>Card 1</p>
+                <div class="card cardStyling">
+                    <img class="card-img-top" src="C:\Users\mOTTiii\Desktop\Git\Recipe-API\assets\images\r1.jpeg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title">Chicken peanuts</h5>
+                        <h6 class="card-text">Calories: 609.7gm</h6>
+                        <h6 class="card-text">Carbs: 6.7</h6>
+                        <h6 class="card-text">Health label: Organic</h6>
+                        <p class="card-text">Egg-Free</p>
+                        <a href="#" class="btn btn-primary">Get Recipe</a>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <p>Card 2</p>
+                <div class="card cardStyling">
+                    <img class="card-img-top" src="C:\Users\mOTTiii\Desktop\Git\Recipe-API\assets\images\r1.jpeg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title">Steak Dish</h5>
+                        <h6 class="card-text">Calories: 609.7gm</h6>
+                        <h6 class="card-text">Carbs: 6.7</h6>
+                        <h6 class="card-text">Health label: Organic</h6>
+                        <p class="card-text">Egg-Free</p>
+                        <a href="#" class="btn btn-primary">Get Recipe</a>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <p>Card 3</p>
+                <div class="card cardStyling">
+                    <img class="card-img-top" src="C:\Users\mOTTiii\Desktop\Git\Recipe-API\assets\images\r1.jpeg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title">Chicken n dip</h5>
+                        <h6 class="card-text">Calories: 609.7gm</h6>
+                        <h6 class="card-text">Carbs: 6.7</h6>
+                        <h6 class="card-text">Health label: Organic</h6>
+                        <p class="card-text">Egg-Free</p>
+                        <a href="#" class="btn btn-primary">Get Recipe</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
