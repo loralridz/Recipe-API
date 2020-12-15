@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* SEARCH BAR STYLING START */
+
+.searchBar {
+    margin: 0 7em 1em;
+    padding: 8rem 0;
+}
+
+.has-search .form-control {
+    padding-left: 4rem;
+    padding-right: 1rem;
+}
+
+.searchBarInput {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #e6e2e2;
+    background-clip: padding-box;
+    border-radius: 1rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 4.5rem;
+    height: 5rem;
+    line-height: 3.375rem;
+    text-align: center;
+    pointer-events: stroke;
+    color: rgb(34, 2, 2);
+}
+
+.searchBarContainer {
+    background-image: url(/assets/images/bg/pexels-gustavo-fring-3984744.jpg);
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 70vh;
+}
+
+.searchBarRow {
+    background-color: #5959594d;
+    /* overflow: hidden;
+    height: 100%;
+    z-index: 2; */
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    line-height: 1;
+    margin: 0 0 1rem;
+    position: relative;
+    text-align: center;
+}
+
+.findRecipe {
+    font-size: 3em;
+    display: inline-block;
+    margin: 0.625rem 0 1.125rem;
+    color: white;
+}
+
+
+/* SEARCH BAR STYLING END */
+
+
+/* RECIPE LIST STYLING START */
+
+.recipeList {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.cardStyling {
+    width: 18rem;
+    height: 80vh;
+    background-color: #13020b;
+    color: white;
+    border: none;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 7px 8px 0 #736069;
+    transition: 0.3s;
+    margin: 1em;
+}
+
+.cardStyling:hover {
+    box-shadow: 0 8px 16px 0 #13020b;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #6b0f1aff;
+    border-color: #060606;
+    border-radius: 0.5em;
+    padding: 0.5rem;
+    width: 60%;
+}
+
+.btn-primary:hover {
+    color: #070000;
+    font-weight: bold;
+    background-color: #fff;
+    border-color: #060606;
+}
+
+
+/* RECIPE LIST STYLING END */
