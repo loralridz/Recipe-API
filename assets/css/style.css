@@ -133,7 +133,7 @@ color: white;
 
 .cardStyling {
     width: 18rem;
-    height: 80vh;
+    /* height: 80vh; */
     background-color: #13020b;
     color: white;
     border: none;
