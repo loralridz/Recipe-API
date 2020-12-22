@@ -3,6 +3,7 @@ const API_KEY = `3adc0ab47f7d222db5976d4ba32977b8`;
 const APP_ID = `885f8879`;
 let searchValue="";
 let url = ``;
+var all_recipe=[];
 
 // Submit form function
 const searchRecipes = (e) => {
@@ -46,9 +47,13 @@ async function getRecipes(url = '') {
 const renderRecipes = (recipes) => {
  console.log("recipes",recipes)
 
-
+  var loop=1;
   for(const recipee of recipes){
+    
 
+    all_recipe[loop]=recipee.recipe;
+   
+    
     let recipeContainer = document.getElementById("recipeContainer");
 
     // create recipe card
@@ -61,17 +66,49 @@ const renderRecipes = (recipes) => {
     let cardImg = document.createElement("img");
     cardImg.className = "card-img-top";
     cardImg.src=recipee.recipe.image;
-
+    
     // fav icon 
-    // icon id
-
+    
+   
     let cardBody = document.createElement("div");
     cardBody.className ="card-body";
+    
+    
+    let cardfav = document.createElement("button");
+    cardfav.className="btn_fav-primary far fa-heart";
+    cardfav.id=loop;
+      cardfav.onclick = function(){ 
+      cardfav.className="btn_fav-click fas fa-heart";
 
+      if(JSON.parse(localStorage.getItem("my_recipes"))!==null){
+      var temp=[];
+      temp=JSON.parse(localStorage.getItem("my_recipes"));
+      
+      var temp2=all_recipe[cardfav.id];
+      for(var i=0;i<=temp.length;i++){
+        if (i===temp.length){
+          temp[i]=temp2;
+        }
+      }
+      localStorage.setItem("my_recipes", JSON.stringify(temp));
+      alert("Added to My Recipes. (^_^) ");}
+      
+      else{
+        var temp=[];
+        temp[0]=all_recipe[cardfav.id];
+        localStorage.setItem("my_recipes",JSON.stringify(temp));
+        alert("Added to My Recipes. (^_^) ");
+      }
+    }
+    loop=loop+1;
+    cardBody.append(cardfav);
+    
     let cardTitle = document.createElement("h6");
     cardTitle.className = "card-title";
     cardTitle.innerHTML = recipee.recipe.label;
     cardBody.append(cardTitle);
+
+
 
     let recipeCalories= document.createElement("p");
     recipeCalories.className = "card-text";
@@ -97,4 +134,40 @@ const renderRecipes = (recipes) => {
     recipeCard.append(card);
     recipeContainer.append(recipeCard);
   }
+   
+ //localStorage.setItem("my_recipes", JSON.stringify(all_recipe));
+
+ console.log(JSON.parse(localStorage.getItem("my_recipes")));
+
 }
+
+// function addToFav(){
+
+//   alert("CAlling");
+// }
+
+
+
+//code saved for later used if needed
+
+
+// if(document.getElementById("loop")){
+//   cardfav.onclick = function(){ 
+//   cardfav.className="btn_fav-click fas fa-heart";
+
+//   if(JSON.parse(localStorage.getItem("my_recipes"))!==null){
+//   var temp=[];
+//   temp=JSON.parse(localStorage.getItem("my_recipes"));
+//   var temp2=all_recipe[cardfav.id];
+//   temp.push(temp2);
+//   localStorage.setItem("my_recipes", JSON.stringify(temp));
+//   alert("Added to My Recipes. (^_^) ");}}
+//   }
+//   else{
+//     var temp=[];
+//     temp.push(all_recipe[cardfav.id]);
+//     localStorage.setItem("my_recipes",JSON.stringify(temp));
+//     alert("Added to My Recipes. (^_^) ");
+//   }}}
+// loop=loop+1;
+// cardBody.append(cardfav);
