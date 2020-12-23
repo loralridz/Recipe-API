@@ -4,7 +4,7 @@ const APP_ID = `885f8879`;
 let searchValue="";
 let url = ``;
 var all_recipe=[];
-
+var all_favs=[];
 // Submit form function
 const searchRecipes = (e) => {
   e.preventDefault();
@@ -79,11 +79,13 @@ const renderRecipes = (recipes) => {
     cardfav.id=loop;
       cardfav.onclick = function(){ 
       cardfav.className="btn_fav-click fas fa-heart";
+      // localStorage.setItem("my_recipes", JSON.stringify(all_recipe[cardfav.id]));
+      // }
 
       if(JSON.parse(localStorage.getItem("my_recipes"))!==null){
       var temp=[];
       temp=JSON.parse(localStorage.getItem("my_recipes"));
-      
+      console.log(temp);
       var temp2=all_recipe[cardfav.id];
       for(var i=0;i<=temp.length;i++){
         if (i===temp.length){
@@ -91,7 +93,10 @@ const renderRecipes = (recipes) => {
         }
       }
       localStorage.setItem("my_recipes", JSON.stringify(temp));
-      alert("Added to My Recipes. (^_^) ");}
+      alert("Added to My Recipes. (^_^) ");
+      console.log("if");
+      console.log(temp);
+    }
       
       else{
         var temp=[];
@@ -99,7 +104,7 @@ const renderRecipes = (recipes) => {
         localStorage.setItem("my_recipes",JSON.stringify(temp));
         alert("Added to My Recipes. (^_^) ");
       }
-    }
+      }
     loop=loop+1;
     cardBody.append(cardfav);
     
@@ -137,7 +142,7 @@ const renderRecipes = (recipes) => {
    
  //localStorage.setItem("my_recipes", JSON.stringify(all_recipe));
 
- console.log(JSON.parse(localStorage.getItem("my_recipes")));
+ //console.log(JSON.parse(localStorage.getItem("my_recipes")));
 
 }
 
