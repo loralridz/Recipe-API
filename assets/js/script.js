@@ -21,7 +21,7 @@ async function getRecipes(url = '') {
   let data = {}; 
     const response = await fetch(url, {
       method: 'post', // *GET, POST, PUT, DELETE, etc.
-    //   mode: 'cors', // no-cors, *cors, same-origin
+      mode: 'cors', // no-cors, *cors, same-origin
     //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     //   credentials: 'same-origin', // include, *same-origin, omit
       headers: {
@@ -43,15 +43,14 @@ async function getRecipes(url = '') {
     //     // console.log(data.hits[0].recipe.ingredients[0].text); 
     //    )
 
-
+let v=1;
 const renderRecipes = (recipes) => {
  console.log("recipes",recipes)
-
-  var loop=1;
+let loop=1;
   for(const recipee of recipes){
     
 
-    all_recipe[loop]=recipee.recipe;
+    all_recipe[v]=recipee.recipe;
    
     
     let recipeContainer = document.getElementById("recipeContainer");
@@ -79,33 +78,54 @@ const renderRecipes = (recipes) => {
     cardfav.id=loop;
       cardfav.onclick = function(){ 
       cardfav.className="btn_fav-click fas fa-heart";
+      // check if nothing in LS
+      let current = localStorage.getItem('recipes');
+        // if not
+        current = current ? current.split(',') : [];
+// add item
+current.push(recipee.recipe.label);
+alert("Added to My Recipes. (^_^) ");
+// save LC 
+localStorage.setItem('recipes', JSON.stringify(current));
+
+// check if nothing in LS
+let current2 = localStorage.getItem('address');
+// if not
+current2 = current2 ? current2.split(',') : [];
+// add item
+current2.push(recipee.recipe.url);
+// save LC 
+localStorage.setItem('address', JSON.stringify(current2));
+
+      // localStorage.setItem(v, JSON.stringify(all_recipe[v]));
+      
       // localStorage.setItem("my_recipes", JSON.stringify(all_recipe[cardfav.id]));
       // }
 
-      if(JSON.parse(localStorage.getItem("my_recipes"))!==null){
-      var temp=[];
-      temp=JSON.parse(localStorage.getItem("my_recipes"));
-      console.log(temp);
-      var temp2=all_recipe[cardfav.id];
-      for(var i=0;i<=temp.length;i++){
-        if (i===temp.length){
-          temp[i]=temp2;
-        }
-      }
-      localStorage.setItem("my_recipes", JSON.stringify(temp));
-      alert("Added to My Recipes. (^_^) ");
-      console.log("if");
-      console.log(temp);
-    }
+    //   if(JSON.parse(localStorage.getItem("my_recipes"))!==null){
+    //   var temp=[];
+    //   temp=JSON.parse(localStorage.getItem("my_recipes"));
+    //   console.log(temp);
+    //   var temp2=all_recipe[cardfav.id];
+    //   for(var i=0;i<=temp.length;i++){
+    //     if (i===temp.length){
+    //       temp[i]=temp2;
+    //     }
+    //   }
+    //   localStorage.setItem("my_recipes", JSON.stringify(temp));
+    //   alert("Added to My Recipes. (^_^) ");
+    //   console.log("if");
+    //   console.log(temp);
+    // }
       
-      else{
-        var temp=[];
-        temp[0]=all_recipe[cardfav.id];
-        localStorage.setItem("my_recipes",JSON.stringify(temp));
-        alert("Added to My Recipes. (^_^) ");
+    //   else{
+    //     var temp=[];
+    //     temp[0]=all_recipe[cardfav.id];
+    //     localStorage.setItem("my_recipes",JSON.stringify(temp));
+    //     alert("Added to My Recipes. (^_^) ");
+    //   }
       }
-      }
-    loop=loop+1;
+    
     cardBody.append(cardfav);
     
     let cardTitle = document.createElement("h6");
@@ -138,6 +158,7 @@ const renderRecipes = (recipes) => {
     card.append(cardImg,cardBody);
     recipeCard.append(card);
     recipeContainer.append(recipeCard);
+    loop=loop+1;
   }
    
  //localStorage.setItem("my_recipes", JSON.stringify(all_recipe));
@@ -145,12 +166,6 @@ const renderRecipes = (recipes) => {
  //console.log(JSON.parse(localStorage.getItem("my_recipes")));
 
 }
-
-// function addToFav(){
-
-//   alert("CAlling");
-// }
-
 
 
 //code saved for later used if needed
