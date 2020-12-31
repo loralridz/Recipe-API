@@ -54,8 +54,8 @@ color: white;
 /* SEARCH BAR STYLING START */
 
 .searchBar {
-    margin: 0 7em 1em;
-    padding: 8rem 0;
+    /* margin: 0 7em 1em;*/
+    padding: 8rem 0; 
 }
 
 .has-search .form-control {
@@ -203,4 +203,21 @@ padding-top: 2rem;
 }
 .recipeItem{
     color: #13020b;
+}
+
+.s010 form .inner-form .basic-search {
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);
+    overflow: hidden;
+    border-radius: 34px;
+    margin-bottom: 5px;
+}
+* {
+    box-sizing: border-box;
+}
+.s010 {
+    font-family: lato,sans-serif;
+}
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
 }
