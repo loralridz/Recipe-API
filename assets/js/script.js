@@ -84,7 +84,15 @@ let loop=1;
         current = current ? current.split(',') : [];
 // add item
 current.push(recipee.recipe.label);
-alert("Added to My Recipes. (^_^) ");
+<div class="alert alert-success" role="alert">
+  A simple success alert—check it out!
+</div>
+let alert = document.createElement("div");
+alert.className = "alert alert-success";
+alert.role = "alert";
+
+body.append(alert)
+// alert("Added to My Recipes. (^_^) ");
 // save LC 
 localStorage.setItem('recipes', JSON.stringify(current));
 
