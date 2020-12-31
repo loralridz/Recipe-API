@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -17,7 +16,7 @@
     <title>Totoro's Kitchen..(^_^)</title>
 </head>
 
-<body style="background: #6b0f1a;">
+<body>
     <!-- HEADER START -->
     <nav class="navbar navbar-expand-lg navbar-dark header_footer" style="padding: 1.5rem 1rem;">
         <a class="navbar-brand text" style="font-size: 1.5em;" href="#">
@@ -51,52 +50,74 @@
     </nav>
     <!-- HEADER END -->
 
-    <!-- BODY START -->
+    <!-- php -->
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        
+      
+      $servername = "localhost";
+      $username = "root";
+      $password = "";
+      $database = "recipeapi";
 
-    <!-- SEARCH BAR START -->
-    <div class="searchBarContainer">
-        <div class="searchBarRow">
-            <div class="container">
-                <div class="row searchBar">
-                    <div class="col">
-                        <strong class="findRecipe">Find Recipes</strong>
-                        <form class="form-group has-search" onsubmit="searchRecipes(event)">
-                            <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control searchBarInput" placeholder="Enter Ingredients" />
-                        </form>
-                    </div>
+      $conn = mysqli_connect($servername, $username, $password, $database);
+      if (!$conn){
+          die("Failed to connect: ". mysqli_connect_error());
+      }
+      else{ 
+        $sql = "INSERT INTO `feedback`(`name`, `email`, `message`) VALUES ('$name', '$email', '$message')";
+        $result = mysqli_query($conn, $sql);
+ 
+        if($result){
+          echo '<div class="alert alert-success">
+          <strong>Success!</strong> Your feedback has been sent successfully.
+        </div>';
+        }
+        else{
+            echo '<div class="alert alert-danger">
+            <strong>Error!</strong> Your feedback is not submitted due to some technical issue.
+          </div>';
+        }
+
+      }
+
+    }
+
+    
+?>
+    <!-- php -->
+
+    <!-- Form div -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <img src="./assets/images/undraw_feedback_h2ft.svg" alt="" class="svg">
+        <form action="feedback.php" method="post">
+            <h1 class="title text-center mb-4">Give us your feedback!</h1>
+    
+                <div class="form-group position-relative">
+                    <input type="text" id="formName" class="form-control form-control-lg thick" placeholder="Your Name" name="name">
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- SEARCH BAR END -->
-
-    <!-- RECIPE LIST START -->
-    <div class="container recipeList" >
-        <div class="row" id="recipeContainer">
-        </div>
-    </div>
-    <!-- RECIPE LIST END -->
-
-    <!-- BODY END -->
-    <!-- <div class="section-4-container section-container section-container-gray-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col section-4 section-description wow fadeInLeftBig animated"
-                    style="visibility: visible; animation-name: fadeInLeftBig">
-                    <h2></h2>
-                    <p></p>
+    
+                <div class="form-group position-relative">
+                    <input type="email" id="formEmail" class="form-control form-control-lg thick" placeholder="Your Email" name="email">
                 </div>
-            </div>
-        </div>
-    </div> -->
+    
+                <div class="form-group message">
+                    <textarea id="formMessage" class="form-control form-control-lg" rows="5" placeholder="Your Message" name="message"></textarea>
+                </div>
+            
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" tabIndex="-1">Send message</button>
+                </div>
+        </form>
+        
+    </div>
+ <!-- FOOTER START -->
 
-    <!-- NEWSLETTER START -->
-    <!-- NEWSLETTER END -->
-    <!-- FOOTER START -->
 
-
-    <div class="header_footer p-3 mb-2">
+ <div class="header_footer p-3 mb-2">
         <footer class="page-footer font-small pt-4">
             <div class="container-fluid text-center text-md-right">
                 <div class="row">
@@ -140,22 +161,16 @@
 
 
 
-
-
-
-    <!-- FOOTER END -->
-
-    <!-- BOOTSTRAP JS FILES -->
-    <script type="text/javascript"  src="./assets/js/script.js" ></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+      <!-- BOOTSTRAP JS FILES -->
+      <script type="text/javascript"  src="./assets/js/script.js" ></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
 </body>
-
 </html>
