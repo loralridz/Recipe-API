@@ -39,8 +39,10 @@ for (let index = 0; index < recipeLabels.length; index++) {
 
      // Recipe button
     let recipeButton = document.createElement("a");
-    recipeButton.className = "getRecipe btn-primary";
+    recipeButton.className = "getRecipe";
     recipeButton.innerText = "Remove Recipe";
+
+    
     recipeButton.id =index+1;
     recipeButton.onclick = function(){ 
  // get recipe names

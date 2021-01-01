@@ -4,20 +4,29 @@ let searchValue="";
 let url = ``;
 var all_recipe=[];
 var all_favs=[];
+
+
+
 // Submit form function
 const searchRecipes = (e) => {
   e.preventDefault();
   searchValue = e.target.querySelector("input").value;
   e.target.querySelector("input").value="";
-  url = `https://api.edamam.com/search?q=${searchValue}&app_id=${APP_ID}&app_key=${API_KEY}`;
+  url = `https://api.edamam.com/search?q=${searchValue}&app_id=${APP_ID}&app_key=${API_KEY}&from=0&to=20`;
   getRecipes(url)
     // .then(data => console.log(data))
-    .then(data => renderRecipes(data.hits));
+    .then(data => renderRecipes(data.hits))
+    .catch((error) => {
+      e.preventDefault();
+      console.log(error)
+      alert("INVALID INPUT! Please Try Again.")
+    });
 }
 
 // API REQ RES Function
 async function getRecipes(url = '') {
   let data = {}; 
+  
     const response = await fetch(url, {
       method: 'post', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -25,13 +34,17 @@ async function getRecipes(url = '') {
     //   credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+      
       },
-    //   redirect: 'follow', // manual, *follow, error
-    //   referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  
       body: JSON.stringify(data) 
+
     });
-    return response.json(); 
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Something went wrong');
+    }
   }
 
     // document.addEventListener('DOMContentLoaded',()=>{
@@ -83,11 +96,18 @@ let loop=1;
         current = current ? current.split(',') : [];
 // add item
 current.push(recipee.recipe.label);
-let alert = document.createElement("div");
-alert.className = "alert alert-success";
-alert.role = "alert";
+// let alerat = document.createElement("div");
+// alerat.className = "alert alert-danger fade in";
+// alerat.style="display:none";
+// alerat.id ="form_errors"
+// body.append(alerat);
+// document.body.innerHTML += '<div id="form_errors" class="alert alert-danger fade in" style="display:none">';
+// body.appendChild(alerat);
+// bootstrap_alert('#form_errors', 'This message will fade out in 1 second')
 
-// alert("Added to My Recipes. (^_^) ");
+alert("Added to My Recipes. (^_^) ");
+
+
 // save LC 
 localStorage.setItem('recipes', JSON.stringify(current));
 
@@ -194,3 +214,13 @@ localStorage.setItem('address', JSON.stringify(current2));
 //   }}}
 // loop=loop+1;
 // cardBody.append(cardfav);
+
+function bootstrap_alert(elem, message, timeout) {
+  $(elem).show().html('<div class="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span>'+message+'</span></div>');
+
+  if (timeout || timeout === 0) {
+    setTimeout(function() { 
+      $(elem).alert('close');
+    }, timeout);    
+  }
+};
