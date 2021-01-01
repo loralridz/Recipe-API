@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/media-queries.css" />
 
-    <title>Totoro's Kitchen..(^_^)</title>
+    <title>Totoro Kitchen</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/images/cooking-tools.png"/>
 </head>
 
 <body>
