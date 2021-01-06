@@ -10,7 +10,7 @@
 color:white;
 }
 .header_footer{
-    background-color: #13020b;
+    background-color: #691313c4;
 color: white;
 }
 .text_header{
@@ -91,6 +91,7 @@ color: white;
 .searchBarContainer {
     background-image: url(https://i.pinimg.com/originals/60/4a/92/604a92d31934eacfc763d2dc0818f8fb.jpg);
     width: 100%;
+    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -119,7 +120,6 @@ color: white;
     margin: 0.625rem 0 1.125rem;
     color: white;
 }
-
 
 
 /* SEARCH BAR STYLING END */
@@ -196,11 +196,6 @@ color: white;
     font-weight: bold;
     background-color: #fff;
     border-color: #060606;
-}
-
-/* about us */
-.aboutUs{
-padding-top: 2rem;
 }
 
 /* myrecipes */
