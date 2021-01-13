@@ -11,17 +11,17 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
     <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/style copy.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/media-queries.css" />
 
     <title>Totoro's Kitchen..(^_^)</title>
 </head>
 
 <body style="background-image: url(https://wallpaperaccess.com/full/260172.jpg);">
-     <!-- HEADER START -->
-     <nav class="navbar navbar-expand-lg navbar-dark header_footer" style="padding: 1rem 1rem;">
+       <!-- HEADER START -->
+       <nav class="navbar navbar-expand-lg navbar-dark header_footer" style="padding: 1rem 1rem;">
         
-        <a class="navbar-brand " href="index.html">
+        <a class="navbar-brand " href="index.php">
             <img class="align-middle" src="https://i.ibb.co/svrvHTr/totoro-s-kitchen-02.png" alt="Totoro's-Kitchen" width="80"
             height="70"   ></a>
         
@@ -33,22 +33,29 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About us</a>
+                    <a class="nav-link" href="about.php">About us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="recipeList.html">My Recipes</a>
+                    <a class="nav-link" href="recipeList.php">My Recipes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="feedback.php">Feedback</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right ">
-                <li class="nav-item"><a class="nav-link " href="Sign_up.html"> <p>Sign Up   </p> </a></li>
+                <?php
+        session_start();
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+            echo '<li class="nav-item"><a class="nav-link" href="logout.php"> <p> Log_out </p></a></li>';
+        } else {
+            echo '<li class="nav-item"><a class="nav-link " href="Sign_up.php"> <p>Sign Up   </p> </a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="Login.html"> <p> Login </p></a></li>
+            <li class="nav-item"><a class="nav-link" href="Login_main.php"> <p> Login </p></a></li>';
+        }
+?>       
             </ul>
         </div>
     </nav>
@@ -56,25 +63,38 @@
 
     <!-- About us-->
 
-    <div class="container-fluid text_header row align-items-center" style="background-color: white;width: 100%; padding-top: 2rem; padding-bottom: 2rem; color: black;">
-        <div class="col">
+    <div class="container" style="    padding-top: 2rem;
+    padding-bottom: 2rem;">
+        <div class="row list-group" id="list-group">
 
+            <!-- <a href="" class="list-group-item recipeItem">
+              <h3 class="list-group-item-heading" id="recipe1">Recipe 1</h3>
+              <p class="list-group-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi necessitatibus asperiores magnam illum maiores expedita tempore vero ad est id eius, voluptates similique dolor ut explicabo! Similique at a accusamus!
 
-            <h1><br>
-                ABOUT US.
-                </h2>
-                <p style="font-weight: bolder;">About Us is a page where we will tell you about the Website<br>
-                    This is OUR FIRST WEBSITE AND DATABASE project in which you can enjoy the following features. <br> <br>
-                    In this Website you can search for Recipes for the main ingredient of your food. <br>Type the name of ingredient and press 'Enter'.
-                     <br>A number of cards will appear having the Nutritional facts about the respective recipe.
-                    <br> You can favorite the Recipe you like. and it will be stored in the My recipes tab in the Header/Navbar. <br>
-                    You can also give us your Precious feedback so that we can improve the Website for your best experience. <br>
-                    <br>This Website was Developed by : <br>
-                        => Noor Rida (FA18-BCS-086). 
-                        <br>
-                        => M.ZAFEER.YASEEN. (FA18-BCS-078).
-        </div>
+              </p>
+            </a>
 
+            <a href="" class="list-group-item recipeItem">
+                <h3 class="list-group-item-heading">Recipe 2</h3>
+                <p class="list-group-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi necessitatibus asperiores magnam illum maiores expedita tempore vero ad est id eius, voluptates similique dolor ut explicabo! Similique at a accusamus!
+                    
+                </p>
+              </a>
+              <a href="" class="list-group-item recipeItem">
+                <h3 class="list-group-item-heading">Recipe 3</h3>
+                <p class="list-group-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi necessitatibus asperiores magnam illum maiores expedita tempore vero ad est id eius, voluptates similique dolor ut explicabo! Similique at a accusamus!
+                    
+                </p>
+              </a>
+              <a href="" class="list-group-item recipeItem">
+                <h3 class="list-group-item-heading">Recipe 4</h3>
+                <p class="list-group-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi necessitatibus asperiores magnam illum maiores expedita tempore vero ad est id eius, voluptates similique dolor ut explicabo! Similique at a accusamus!
+                    
+                </p>
+              </a> -->
+          </div>
+       
+       
     </div>
 <!-- FOOTER START -->
 
@@ -85,16 +105,16 @@
             <div class="row">
 
                 <div class="col-md-3 mb-md-0 mb-3">
-                    <img class="logo-footer"
-                    src="https://i.ibb.co/svrvHTr/totoro-s-kitchen-02.png"
-                    height="110px" width="133px" alt="Totoro's Kitchen" />
-        <p  >Totoro's Kitchen</p> 
+                    <!-- <img class="logo-footer"
+                                src="https://i.pinimg.com/originals/a4/fa/8c/a4fa8c0588f96c91989308c2448b095a.png"
+                                height="180px" width="200px" alt="Totoro's Kitchen" /> -->
+                    <p class="text" style="top:20% ;">TOTORO's Kitchen</p>
 
                 </div>
                 <div class="col-md-3 mb-md-0 mb-3">
                     <ul class="list-unstyled">
                         <li> Learn more. </li>
-                        <li> <a class="link" href="about.html">About us.</a></li>
+                        <li> <a class="link" href="about.php">About us.</a></li>
                         <li>
                             <a class="link" href="#">kitchen@Totoro.pk</a>
                         </li>
@@ -125,6 +145,8 @@
     <!-- FOOTER END -->
 
     <!-- BOOTSTRAP JS FILES -->
+    <script type="text/javascript"  src="./assets/js/myRecipes.js" ></script>
+   
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

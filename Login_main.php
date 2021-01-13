@@ -27,9 +27,9 @@
 
 <body style="background-image: url(https://wallpaperaccess.com/full/260172.jpg);">
     <!-- HEADER START -->
-      <nav class="navbar navbar-expand-lg navbar-dark header_footer" style="padding: 1rem 1rem;">
+    <nav class="navbar navbar-expand-lg navbar-dark header_footer" style="padding: 1rem 1rem;">
         
-        <a class="navbar-brand " href="index.html">
+        <a class="navbar-brand " href="index.php">
             <img class="align-middle" src="https://i.ibb.co/svrvHTr/totoro-s-kitchen-02.png" alt="Totoro's-Kitchen" width="80"
             height="70"   ></a>
         
@@ -41,22 +41,32 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About us</a>
+                    <a class="nav-link" href="about.php">About us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="recipeList.html">My Recipes</a>
+                    <a class="nav-link" href="recipeList.php">My Recipes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="feedback.php">Feedback</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right ">
-                <li class="nav-item"><a class="nav-link " href="Sign_up.html"> <p>Sign Up   </p> </a></li>
+                <?php
+            session_start();
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+                echo '<li class="nav-item"><a class="nav-link" href="logout.php"> <p> Log_out </p></a></li>';
+            } else {
+                echo '<li class="nav-item"><a class="nav-link " href="Sign_up.php"> <p>Sign Up   </p> </a></li>
+                    
+                <li class="nav-item"><a class="nav-link" href="Login_main.php"> <p> Login </p></a></li>';
+            }
+?>
                 
-                <li class="nav-item"><a class="nav-link" href="Login.html"> <p> Login </p></a></li>
+                
+                
             </ul>
         </div>
     </nav>
@@ -74,7 +84,7 @@
                         </div>
                        
                         <div class="form-group">
-                            <input type="text" class="form-input form-input form-control form-control-lg thick" name="password" id="password" placeholder="Password"/>
+                            <input type="password" class="form-input form-input form-control form-control-lg thick" name="password" id="password" placeholder="Password"/>
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                      
@@ -84,7 +94,7 @@
                         </div>
                     </form>
                     <p class="loginhere">
-                        Don't have an account ? <a href="Sign_up.html" class="loginhere-link">Sign-up here</a>
+                        Don't have an account ? <a href="Sign_up.php" class="loginhere-link">Sign-up here</a>
                     </p>
                 </div>
             </div>
@@ -109,7 +119,7 @@
                     <div class="col-md-3 mb-md-0 mb-3">
                         <ul class="list-unstyled">
                             <li> Learn more. </li>
-                            <li> <a class="link" href="about.html">About us.</a></li>
+                            <li> <a class="link" href="about.php">About us.</a></li>
                             <li>
                                 <a class="link" href="#">kitchen@Totoro.pk</a>
                             </li>

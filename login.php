@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_REQUEST['password'];
 
     $conn = mysqli_connect("localhost", "root", "", "totoro");
-    echo $conn ? 'connected' : 'not connected';
+    
     if(mysqli_connect_error()){
         die("ERROR: Could not connect. " . mysqli_connect_error());
     }
@@ -25,19 +25,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 {
                     session_start();
                     $_SESSION['user'] = $email;
-                    header("location: index.html?username=".$email);
+                    $_SESSION['loggedin'] = true;
+                    header("location: index.php?username=".$email);
                     exit();
                 }
             else
-            {
-                echo "The password is incorrect! ";
+            {   echo '<script>
+                alert("Password is incorrect");
+                </script>';
+                
+                header("Refresh:0; Login_main.php");
+               
                 // Print '<script>document.getElementById("pass").innerHTML="Incorrect Password!"</script>;'; 
             }
         }
     }
     else
     {
-        echo "The username is incorrect! ";
+        echo '<script>
+                alert("User Name is incorrect");
+                </script>';
+                header("Refresh:0; Login_main.php");
+                
+               
         // print '<script>document.getElementById("uname").innerHTML="Incorrect Username!"</script>';
     }
 }
