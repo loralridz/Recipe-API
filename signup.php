@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $user_name=$_REQUEST["user_name"];
     $email=$_REQUEST["email"];
     $password=$_REQUEST["password"];
-    console.log("1st");
+   // console.log("1st");
 
     $conn = mysqli_connect("localhost", "root", "", "totoro");
     if(mysqli_connect_error()){
@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(mysqli_num_rows($selectresult) > 0){
         while($row = mysqli_fetch_assoc($selectresult)) {
             $db_email= $row["UserName"];
-            //echo "id: " . $row["id"]. " - Username: " . $row["username"]. " - Password:" . $row["password"]. "<br>";
             if($db_email == $email)
             {
                 echo '<script>document.getElementById("uname").innerHTML="Username has been taken!"</script>';

@@ -2,7 +2,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $message = $_POST['message'];
+        $messge = $_POST['message'];
         
       
       // Connecting to the Database
@@ -20,8 +20,9 @@
       else{ 
         // Submit these to a database
         // Sql query to be executed 
-        $sql = "INSERT INTO `feedback`(`name`, `email`, `message`) VALUES ('$name', '$email', '$message')";
-        $result = mysqli_query($conn, $sql);
+
+        $insert = "INSERT INTO feedback (Uname,Uemail,Umessege) VALUES ('$name', '$email', '$messege')";
+        $result = mysqli_query($conn, $insert);
  
         if($result){
           echo '<div class="alert alert-success">

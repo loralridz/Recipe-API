@@ -65,12 +65,10 @@
 
     <!-- php -->
     <?php
-
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $message = $_POST['message'];
+        $messege = $_POST['messege'];
         
       
       $servername = "localhost";
@@ -83,7 +81,7 @@
           die("Failed to connect: ". mysqli_connect_error());
       }
       else{ 
-        $sql = "INSERT INTO `feedback`(`User Name`, `message`) VALUES ('$name', '$email', '$message')";
+        $sql = "INSERT INTO feedback (Uname,Uemail,Umessege) VALUES ('$name', '$email', '$messege')";
         $result = mysqli_query($conn, $sql);
  
         if($result){
@@ -120,7 +118,7 @@
                 </div>
     
                 <div class="form-group message">
-                    <textarea id="formMessage" class="form-control form-control-lg" rows="5" placeholder="Your Message" name="message"></textarea>
+                    <textarea id="formMessage" class="form-control form-control-lg" rows="5" placeholder="Your Message" name="messege"></textarea>
                 </div>
             
                 <div class="text-center">
